@@ -142,7 +142,7 @@ const calculateAverageUntilZero = () => {
     currentInputNumber = Number(prompt("Please put a number"));
     sum += currentInputNumber;
     count++;
-    console.log("curet input:", currentInputNumber);
+    console.log("current input:", currentInputNumber);
   } while (currentInputNumber !== 0);
   const averageNum = sum / count;
   console.log("averageNum: ", averageNum);
@@ -286,3 +286,143 @@ const findMinMax = () => {
   console.log("max", max);
 };
 findMinMax();
+
+// loop_09
+/* 
+Write a function named sumFromOneToHundred:
+- Use a loop to calculate the sum of all numbers from 1 to 100.
+Log the final sum in the console.
+*/
+
+const sumFromOneToHundred = () => {
+  let sum = 0;
+
+  for (let count = 1; count <= 100; count++) {
+    sum += count;
+  }
+  console.log("sum", sum);
+};
+
+sumFromOneToHundred();
+
+// loop_10
+/* 
+Write a function named countdownTimer:
+- Take a number (e.g., 10) as input and simulate a countdown in the console.
+Log each number in descending order until 0, and then log: "Time's up!".
+ */
+
+const countdownTimer = (input) => {
+  for (let count = input; count >= 0; count--) {
+    console.log("counting down...", count);
+  }
+  console.log("Time is up!");
+};
+countdownTimer(5);
+
+// loop_11
+/* 
+
+Write a function named generateMultiplicationTable:
+- Take a number (e.g., 5) as input.
+- Use a loop to generate the multiplication table for that number.
+Log the table in the console.
+
+Example for 5:
+
+5 x 1 = 5
+5 x 2 = 10
+...
+5 x 10 = 50
+ */
+
+const generateMultiplicationTable = (input) => {
+  let multiplication = 0;
+  for (let count = 1; count <= 10; count++) {
+    multiplication = input * count;
+    console.log(`${input} x ${count} = ${multiplication}`);
+  }
+};
+
+generateMultiplicationTable(3);
+
+// Loop_12
+/* 
+Write a function named buildGroceryList:
+- Prompt the user to input grocery items one by one.
+- Stop when the user types "done".
+Log the complete grocery list in the console.
+ */
+
+const buildGroceryList = () => {
+  let groceryList = "";
+
+  // do {
+  //   itemInput = prompt("Input grocery items here");
+  //   if (itemInput === "done") {
+  //     groceryList = groceryList.trim();
+  //     break;
+  //   }
+  //   groceryList += itemInput;
+  //   groceryList += " ";
+  //   console.log(itemInput);
+  //   } while (itemInput !== "done");
+
+  do {
+    const itemInput = prompt("Input grocery items here");
+    if (itemInput === "done") {
+      groceryList = groceryList.trim();
+      break;
+    }
+    groceryList += itemInput;
+    groceryList += " ";
+    console.log(itemInput);
+  } while (true);
+
+  console.log(groceryList);
+};
+buildGroceryList();
+
+// loop_13
+/* 
+Write a function named validatePassword:
+- Use a loop to allow the user to input a password.
+- If the password is "correct123", log: "Access granted!" and exit the loop.
+- If incorrect, prompt the user again with: "Try again!".
+ */
+
+const validatePassword = () => {
+  let passwordInput;
+  const validPassword = "correct123";
+
+  passwordInput = prompt("Input a password!");
+
+  while (passwordInput !== validPassword) {
+    passwordInput = prompt("Try again!");
+  }
+  console.log("Access granted!");
+};
+validatePassword();
+
+// Loop_14
+/* 
+Write a function named createWordPyramid:
+- Take a word (e.g., "code") as input.
+- Use a loop to build a pyramid pattern:
+    Example for "code":
+    c
+    co
+    cod
+    code
+ */
+
+const createWordPyramid = (input) => {
+  let currInput = "";
+
+  for (let count = 0; count < input.length; count++) {
+    currInput += input[count];
+    console.log(currInput);
+  }
+};
+
+createWordPyramid("code");
