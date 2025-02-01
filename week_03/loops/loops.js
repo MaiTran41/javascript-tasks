@@ -417,11 +417,11 @@ Write a function named createWordPyramid:
  */
 
 const createWordPyramid = (input) => {
-  let currInput = "";
+  let row = "";
 
   for (let count = 0; count < input.length; count++) {
-    currInput += input[count];
-    console.log(currInput);
+    row += input[count];
+    console.log(row);
   }
 };
 

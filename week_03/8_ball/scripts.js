@@ -5,25 +5,35 @@ const magic8Ball = () => {
   let randomNumber = Math.floor(Math.random() * 8) + 1;
   console.log(randomNumber);
 
+  let answer = "";
+
   switch (randomNumber) {
-    case (randomNumber = 1):
-      return alert("Yes, definitely!");
-    case (ranmber = 2):
-      return "And the answer is maybe!";
-    case (ranmber = 3):
-      return "I have no idea. Why are you asking me??";
-    case (ranmber = 4):
-      return "Yes! Go for it!";
-    case (ranmber = 5):
-      return "Not you again..ugh. Shake one more time!";
-    case (ranmber = 6):
-      return "Manifesting...Definitely yes!";
-    case (ranmber = 7):
-      return "Busy today, come back tomorrow!";
-    case (ranmber = 8):
-      return "The universe says no this time :( ";
+    case 1:
+      answer = "Yes, definitely!";
+      break;
+    case 2:
+      answer = "And the answer is maybe!";
+      break;
+    case 3:
+      answer = "I have no idea. Why are you asking me??";
+      break;
+    case 4:
+      answer = "Yes! Go for it!";
+      break;
+    case 5:
+      answer = "Not you again..ugh. Shake one more time!";
+      break;
+    case 6:
+      answer = "Manifesting...Definitely yes!";
+      break;
+    case 7:
+      answer = "Busy today, come back tomorrow!";
+      break;
+    case 8:
+      answer = "The universe says no this time :( ";
+      break;
   }
-  return;
+  alert(answer);
 };
 
 // function getRndInteger(min, max) {
