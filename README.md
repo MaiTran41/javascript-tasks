@@ -113,5 +113,5 @@ Inside your local repository folder, create a file named README.md.
   - [x] conditions
 - **week_03:**
   - [x] github
-  - [ ] loops
+  - [x] loops
   - [ ] 8_ball
