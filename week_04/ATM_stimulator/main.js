@@ -32,7 +32,7 @@ const deposit = () => {
 
 const withdraw = () => {
   const withdrawAmount = Number(withdrawInput.value);
-  if (withdrawAmount <= currentBalance) {
+  if (withdrawAmount <= currentBalance && withdrawAmount !== 0) {
     currentBalance -= withdrawAmount;
     console.log("Current balance", currentBalance);
   } else {

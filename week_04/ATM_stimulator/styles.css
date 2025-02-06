@@ -16,7 +16,9 @@ section {
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 40px;
+  color: darkgreen;
+  font-weight: bold;
 }
 
 input {
@@ -31,9 +33,9 @@ input {
 }
 
 button {
-  border: 2px solid lightpink;
+  border: 2px solid grey;
   border-radius: 8px;
-  background-color: lightpink;
+  background-color: lightgrey;
   height: 30px;
   margin: 15px 0;
   width: 120px;
@@ -42,4 +44,9 @@ button {
 #message {
   font-size: 14px;
   font-style: italic;
+}
+
+button:hover {
+  background-color: pink;
+  border: 2px solid lightpink;
 }
