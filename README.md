@@ -115,3 +115,7 @@ Inside your local repository folder, create a file named README.md.
   - [x] github
   - [x] loops
   - [x] 8_ball
+- **week_04:**
+  - [] Basic DOM
+  - [] ATM simulator
+  - [] Pancake maker
