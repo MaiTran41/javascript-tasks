@@ -1,6 +1,6 @@
 body {
   background-color: #f6e5cc;
-  color: #000000;
+  color: #966033;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,16 +39,17 @@ body {
 .price-banner {
   position: absolute;
   top: 20px;
-  right: 20px;
-  background-color: #d17b49;
-  color: white;
+  right: 30px;
+  background-color: #f6e5cc;
+  color: #966033;
+  font-weight: bolder;
   border-radius: 50%;
   width: 100px;
   height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 h3 {
@@ -57,6 +58,7 @@ h3 {
 
 input[type="checkbox"] {
   margin-right: 5px;
+  accent-color: #966033;
 }
 
 select,
