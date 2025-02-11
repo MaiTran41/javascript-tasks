@@ -1,5 +1,5 @@
 body {
-  background-color: #ffffff;
+  background-color: #f6e5cc;
   color: #000000;
   display: flex;
   justify-content: center;
@@ -7,6 +7,7 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow: hidden;
+  font-family: "Raleway", sans-serif;
 }
 
 .container {
