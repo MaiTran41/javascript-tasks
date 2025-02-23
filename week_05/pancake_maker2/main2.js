@@ -63,13 +63,40 @@ const changeHandler = () => {
 };
 pancakeForm.addEventListener("change", changeHandler);
 
+const getToppings = () => {
+  const selectedToppings = document.querySelectorAll(".topping:checked");
+
+  const toppingList = [];
+
+  selectedToppings.forEach((element) => {
+    toppingList.push(
+      element.parentElement.innerText.trim().toLocaleLowerCase()
+    );
+  });
+  return toppingList.join(", ");
+};
+const getExtras = () => {
+  const selectedExtras = document.querySelectorAll(".extra:checked");
+
+  const extraList = [];
+
+  selectedExtras.forEach((element) => {
+    extraList.push(element.parentElement.innerText.trim().toLocaleLowerCase());
+  });
+
+  return extraList.join(", ");
+};
+
 // Check this
 const seeOrderClickHandler = () => {
-  const selectedToppings = document.querySelectorAll(".topping:checked");
-  //   console.log(selectedToppings);
-  console.log(customerName.value);
+  const toppings = getToppings();
+  const extras = getExtras();
 
-  summaryText.textContent = `Order created by ${customerName.value}: ${pancakeType.value} pancake with ${selectedToppings.value}`;
+  // array destructuring
+  const [formattedPancakeType] = pancakeType.value.split(" - ");
+
+  // Example: "Order created by Mei: Blueberries pancake  with [nuts, syrup] & cream. Delivery fee is 5e"
+  summaryText.textContent = `Order created by ${customerName.value}: ${formattedPancakeType} pancake with ${toppings} & ${extras}. Delivery method is  `;
 };
 
 seeOrderBtn.addEventListener("click", seeOrderClickHandler);
