@@ -192,12 +192,31 @@ Expected outcome: [0, 2, 4]
 */
 // Write your code here
 
+const indices = [];
+
+const attendee = "John";
+
+let attendeeIndx = attendees.indexOf(attendee);
+
+while (attendeeIndx !== -1) {
+  indices.push(attendeeIndx);
+
+  // indexOf(searchElement, fromIndex)
+  attendeeIndx = attendees.indexOf(attendee, attendeeIndx + 1);
+}
+
+console.log(indices);
+
 // Exercise 15: Convert all names in attendees array to uppercase
 /*
 Create a new array where every name in attendees is written in uppercase.
 Expected outcome: ['JOHN', 'SARAH', 'JOHN', 'ALEX', 'JOHN']
 */
 // Write your code here
+const uppercaseAttendeeNames = attendees.map((name) =>
+  name.toLocaleUpperCase()
+);
+console.log(uppercaseAttendeeNames);
 
 // Exercise 16: Merge forestAnimals and farmAnimals arrays
 let forestAnimals = ["Deer", "Bear", "Wolf"];
@@ -209,6 +228,9 @@ Expected outcome: ['Deer', 'Bear', 'Wolf', 'Cow', 'Sheep', 'Goat']
 */
 // Write your code here
 
+const animals = forestAnimals.concat(farmAnimals);
+console.log(animals);
+
 // Exercise 17: Remove first and last elements from birdSpecies
 let birdSpecies = ["Eagle", "Owl", "Hawk", "Sparrow", "Penguin"];
 
@@ -217,6 +239,9 @@ Remove the first and last elements from the birdSpecies array.
 Expected outcome: ['Owl', 'Hawk', 'Sparrow']
 */
 // Write your code here
+birdSpecies.shift();
+birdSpecies.pop();
+console.log(birdSpecies);
 
 // Exercise 18: Use `splice` to remove and replace elements in numbers
 let numbers = [10, 20, 30, 40, 50];
@@ -227,6 +252,9 @@ Expected outcome: [10, 20, 25, 27, 40, 50]
 */
 // Write your code here
 
+numbers.splice(2, 1, 25, 27);
+console.log(numbers);
+
 // Exercise 19: Increase each price by 10% using `map`
 let prices = [5, 10, 15, 20];
 
@@ -235,6 +263,8 @@ Create a new array where each price is increased by 10%.
 Expected outcome: [5.5, 11, 16.5, 22]
 */
 // Write your function here
+const newPrices = prices.map((price) => price + price * 0.1);
+console.log(newPrices);
 
 // Exercise 20: Filter words longer than 5 letters using `filter`
 let words = ["apple", "banana", "cherry", "kiwi", "strawberry"];
@@ -244,3 +274,5 @@ Create a new array containing only words longer than 5 letters from the words ar
 Expected outcome: ['banana', 'cherry', 'strawberry']
 */
 // Write your function here
+const filteredWords = words.filter((word) => word.length > 5);
+console.log(filteredWords);
