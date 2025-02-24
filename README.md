@@ -116,6 +116,10 @@ Inside your local repository folder, create a file named README.md.
   - [x] loops
   - [x] 8_ball
 - **week_04:**
-  - [] Basic DOM
-  - [] ATM simulator
-  - [] Pancake maker
+  - [x] Basic DOM
+  - [x] ATM simulator
+  - [x] Pancake maker
+- **week_05:**
+  - [x] Arrays
+  - [x] Pancake maker 2
+
