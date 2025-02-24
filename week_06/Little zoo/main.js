@@ -25,9 +25,9 @@ animals.forEach((animalName) => {
 // animalsListDisplay.innerHTML = "";
 
 const addAnimalHandler = () => {
-  const newAnimalName = animalsInput.value;
-
-  //   animalsListDisplay.appendChild(newAnimalName);
+  const element = document.createElement("li");
+  element.textContent = animalsInput.value;
+  animalsListDisplay.appendChild(element);
 };
 
 addAnimalBtn.addEventListener("click", addAnimalHandler);
