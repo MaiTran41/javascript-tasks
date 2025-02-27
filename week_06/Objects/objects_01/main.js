@@ -69,6 +69,21 @@ Test `createBook` by creating a new book object with user-provided input and log
 */
 
 // Your code here
+// Change the function name to uppercase
+function CreateBook(title, author, yearPublished, genres = []) {
+  this.title = title;
+  this.author = author;
+  this.yearPublished = yearPublished;
+  this.genres = genres;
+}
+
+const newBook = new CreateBook(
+  ((title = prompt("Add title")),
+  (author = prompt("Add author")),
+  (yearPublished = prompt("Add yearPublished (numbers)")),
+  (genres = prompt("Add genres")))
+);
+console.log(newBook);
 
 /* Task 6
 Convert the `library` collection to a JSON string and log it to the console.
