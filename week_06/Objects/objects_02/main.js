@@ -303,6 +303,19 @@ Write a function that logs all items in the character’s inventory.
 */
 
 // Your code here
+const gameCharacter = {
+  name: "Mario",
+  level: 1,
+  health: "Good",
+  inventory: ["a", "b", "c", "d"],
+};
+const inventoryCheck = () => {
+  const inventoryArr = gameCharacter.inventory;
+  for (let i = 0; i < inventoryArr.length; i++) {
+    console.log(inventoryArr[i]);
+  }
+};
+inventoryCheck();
 
 /* Task 12
 Define an array named `employees`, where each employee has a `name`, `role`, and `workingHours`.
@@ -310,6 +323,40 @@ Write a function that finds and logs employees who work more than 40 hours.
 */
 
 // Your code here
+const employees = [
+  {
+    name: "Mei",
+    role: "employee",
+    workingHours: 38,
+  },
+  {
+    name: "Mike",
+    role: "employee",
+    workingHours: 45,
+  },
+  {
+    name: "Max",
+    role: "employee",
+    workingHours: 41,
+  },
+  {
+    name: "Jake",
+    role: "employee",
+    workingHours: 43,
+  },
+];
+
+const workingHourCheck = () => {
+  for (let i = 0; i < employees.length; i++) {
+    const employeeWorkingHours = employees[i].workingHours;
+    if (employeeWorkingHours > 40) {
+      console.log(
+        `Employee: ${employees[i].name}, working hour:  ${employeeWorkingHours}`
+      );
+    }
+  }
+};
+workingHourCheck();
 
 /* Task 13
 Create an array `musicAlbums` where each album has `title`, `artist`, and `releaseYear`.
@@ -317,6 +364,37 @@ Write a function that logs albums released after 2000.
 */
 
 // Your code here
+const musicAlbums = [
+  {
+    title: "Short & Sweet",
+    artist: "Sabrina Carpenter",
+    releaseYear: 2024,
+  },
+  {
+    title: "GNX",
+    artist: "Kendrick Lamar",
+    releaseYear: 2024,
+  },
+  {
+    title: "Hit Me Hard and Soft",
+    artist: "Billie Eilish",
+    releaseYear: 2024,
+  },
+  {
+    title: "The Slim Shady LP",
+    artist: "Eminem",
+    releaseYear: 1999,
+  },
+];
+
+const releasedYearCheck = () => {
+  for (let i = 0; i < musicAlbums.length; i++) {
+    if (musicAlbums[i].releaseYear > 2000) {
+      console.log(`Album released after 2000: ${musicAlbums[i].title}`);
+    }
+  }
+};
+releasedYearCheck();
 
 /* Task 14
 Define an array named `cars`, each containing `brand`, `model`, and `horsepower`.
@@ -324,6 +402,60 @@ Write a function that finds and returns the car with the highest horsepower.
 */
 
 // Your code here
+const cars = [
+  {
+    brand: "Toyota",
+    model: "GR Corolla",
+    horsepower: 300,
+  },
+  {
+    brand: "Ford Mustang",
+    model: "EcoBoost Fastback",
+    horsepower: 315,
+  },
+  {
+    brand: "Hyundai",
+    model: "Ioniq 5 AWD ",
+    horsepower: 320,
+  },
+  {
+    brand: "BMW",
+    model: "335i Coupe (E92) ",
+    horsepower: 300,
+  },
+];
+/* Lesson learned: 
+- Check empty array => array.length
+- the 1st thing to do when dealing with reduce: think of what happen in the 1st loop
+*/
+
+const horsepowerCheck = () => {
+  const highestHpCars = cars.reduce((accumulator, currentValue) => {
+    if (accumulator.length === 0) {
+      accumulator.push(currentValue);
+      return accumulator;
+    }
+
+    const currHighestHpCar = accumulator[0];
+
+    if (currentValue.horsepower > currHighestHpCar.horsepower) {
+      accumulator = [currentValue];
+      return accumulator;
+    }
+
+    if (currentValue.horsepower === currHighestHpCar.horsepower) {
+      accumulator.push(currentValue);
+      return accumulator;
+    }
+
+    // Last case: currentValue.horsepower < currHighestHpCar.horsepower
+    return accumulator;
+  }, []);
+
+  console.log(highestHpCars);
+};
+
+horsepowerCheck();
 
 /* Task 15
 Create an array of `airports`, where each airport has `name`, `country`, and `flightsPerDay`.
