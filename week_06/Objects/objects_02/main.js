@@ -142,20 +142,14 @@ const students = [
   },
 ];
 
-console.log(students[1].score[0]);
+const scoresCalculate = (student) => {
+  const sumScore = student.score.reduce((acc, curr) => {
+    return acc + curr;
+  }, 0);
+  student.averageScore = sumScore / student.score.length;
+};
 
-// const scoresCalculate = () => {
-//   let averageScore;
-
-//   for (let i = 0; i < students[i].score.length; i++) {
-//     let totalScore = 0;
-//     totalScore += students[i].score[i];
-//     averageScore = totalScore / students.score.length;
-//   }
-//   console.log(averageScore);
-// };
-
-// scoresCalculate();
+students.forEach(scoresCalculate);
 
 /* Task 6
 Define an array named `courses`, each containing `courseName`, `instructor`, and `studentsEnrolled`.
@@ -296,6 +290,12 @@ const foxPack = {
     },
   ],
 };
+const foxAgeCheck = () => {
+  const foxArr = foxPack.fox;
+  const filteredFoxes = foxArr.filter((fox) => fox.age > 2);
+  console.log(filteredFoxes);
+};
+foxAgeCheck();
 
 /* Task 11
 Create an object `gameCharacter` with properties `name`, `level`, `health`, and `inventory` (an array).
@@ -463,3 +463,52 @@ Write a function that finds the airport with the most daily flights.
 */
 
 // Your code here
+const airports = [
+  {
+    name: "SGN",
+    country: "Vietnam",
+    flightsPerDay: 12,
+  },
+  {
+    name: "CDG",
+    country: "France",
+    flightsPerDay: 22,
+  },
+  {
+    name: "Frankfurt",
+    country: "Germany",
+    flightsPerDay: 32,
+  },
+  {
+    name: "Helsinki",
+    country: "Finland",
+    flightsPerDay: 32,
+  },
+];
+
+const mostDailyFlightCheck = () => {
+  const mostDailyFlights = airports.reduce((acc, curr) => {
+    if (acc.length === 0) {
+      acc.push(curr);
+      return acc;
+    }
+
+    const currMostFlightAirport = acc[0];
+
+    if (curr.flightsPerDay > currMostFlightAirport.flightsPerDay) {
+      acc = [curr];
+      return acc;
+    }
+
+    if (curr.flightsPerDay === currMostFlightAirport.flightsPerDay) {
+      acc.push(curr);
+      return acc;
+    }
+
+    return acc;
+  }, []);
+
+  console.log(mostDailyFlights);
+};
+
+mostDailyFlightCheck();

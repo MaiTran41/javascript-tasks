@@ -70,20 +70,48 @@ Test `createBook` by creating a new book object with user-provided input and log
 
 // Your code here
 // Change the function name to uppercase
-function CreateBook(title, author, yearPublished, genres = []) {
-  this.title = title;
-  this.author = author;
-  this.yearPublished = yearPublished;
-  this.genres = genres;
+
+function createBook(title, author, yearPublished, genres) {
+  return new Book(title, author, yearPublished, genres);
 }
 
-const newBook = new CreateBook(
-  ((title = prompt("Add title")),
-  (author = prompt("Add author")),
-  (yearPublished = prompt("Add yearPublished (numbers)")),
-  (genres = prompt("Add genres")))
-);
-console.log(newBook);
+const testCreateBook = () => {
+  const title = prompt("Add book title: ");
+  const author = prompt("Add book author: ");
+  const yearPublished = prompt("Add year published:: ");
+
+  const genres = [];
+
+  let shouldAskGenre = true;
+
+  while (shouldAskGenre) {
+    genres.push(prompt("Add book genre:"));
+
+    let shouldAskUserToContinue = true;
+
+    while (shouldAskUserToContinue) {
+      const userWantsToContinue = prompt(
+        "Do you want to continue adding genres? (y/n)"
+      );
+
+      if (userWantsToContinue === "n") {
+        shouldAskUserToContinue = false;
+        shouldAskGenre = false;
+        continue;
+      }
+
+      if (userWantsToContinue === "y") {
+        shouldAskUserToContinue = false;
+        continue;
+      }
+    }
+  }
+
+  const book = createBook(title, author, yearPublished, genres);
+  console.log(book);
+};
+
+testCreateBook();
 
 /* Task 6
 Convert the `library` collection to a JSON string and log it to the console.
@@ -124,16 +152,14 @@ const car = {
   model: "M440i",
   year: 2025,
   isElectric: false,
-  checkElectric() {
-    if (this.isElectric) {
-      console.log("This car is eco-friendly!");
-    } else {
-      console.log("This car runs on fuel.");
-    }
-  },
 };
-
-car.checkElectric();
+const checkElectric = () => {
+  if (car.isElectric) {
+    console.log("This car is eco-friendly!");
+  } else {
+    console.log("This car runs on fuel.");
+  }
+};
 
 /* Task 9
 Create a `movies` array where each movie is an object with properties for `title`, `director`, and `rating`.
@@ -273,15 +299,15 @@ const smartphone = {
   model: "s24",
   batteryLife: 16,
   is5GEnabled: true,
-  is5GCheck() {
-    if (this.is5GEnabled) {
-      console.log("This phone supports 5G!");
-    } else {
-      console.log("This phone does not support 5G.");
-    }
-  },
 };
-smartphone.is5GCheck();
+const is5GCheck = () => {
+  if (smartphone.is5GEnabled) {
+    console.log("This phone supports 5G!");
+  } else {
+    console.log("This phone does not support 5G.");
+  }
+};
+is5GCheck();
 
 /* Task 14
 Define an object named `fox` with properties `name`, `age`, and `habitat`.
@@ -293,15 +319,16 @@ const fox = {
   name: "Arctic fox",
   age: 5,
   habitat: "Arctic regions",
-  foxAgeCheck() {
-    if (this.age < 3) {
-      console.log("This fox is young.");
-    } else {
-      console.log("This fox is an adult");
-    }
-  },
 };
-fox.foxAgeCheck();
+const foxAgeCheck = () => {
+  if (fox.age < 3) {
+    console.log("This fox is young.");
+  } else {
+    console.log("This fox is an adult");
+  }
+};
+
+foxAgeCheck();
 
 /* Task 15
 Define an array named `employees`, where each employee has `name`, `position`, and `salary`.
