@@ -8,7 +8,7 @@ Update the `quantity` property and display the total price dynamically.
 
 const product = {
   name: "egg",
-  price: 4,
+  price: 2,
   quantity: null,
 };
 
@@ -17,16 +17,13 @@ const addQuantityBtn = document.getElementById("addQuantityBtn");
 const totalPriceDisplay = document.getElementById("totalPriceDisplay");
 
 const totalPriceChange = () => {
-  quantityInput.value;
-
   product.quantity = Number(quantityInput.value);
 
   const totalPrice = product.quantity * product.price;
 
   totalPriceDisplay.textContent = totalPrice;
 
-  console.log(quantityInput.value);
-  console.log(totalPrice);
+  quantityInput.value = "";
 };
 
 addQuantityBtn.addEventListener("click", totalPriceChange);

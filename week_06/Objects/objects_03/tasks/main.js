@@ -1,10 +1,3 @@
-/* Task 6
-Define a `Task` constructor that takes `title`, `description`, and `completed`.
-Add a button in HTML that, when clicked, adds a new `Task` object to a `tasks` array and displays it on the page.
-*/
-
-// Your code here
-
 /* Task 7
 Create an object `weatherApp` with a method `fetchWeather(city)`.
 Use `fetch` to get weather data from an API and display it in an HTML element.
