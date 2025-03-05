@@ -279,7 +279,7 @@ const orders = [
   {
     orderId: "u31y8er",
     customerName: "Harper",
-    totalAmount: "37€",
+    totalAmountfavoriteBook: "37€",
     status: "pending",
   },
 ];
