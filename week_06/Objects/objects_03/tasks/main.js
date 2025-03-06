@@ -1,33 +1,3 @@
-/* Task 7
-Create an object `weatherApp` with a method `fetchWeather(city)`.
-Use `fetch` to get weather data from an API and display it in an HTML element.
-(API: OpenWeather or any free weather API)
-*/
-
-// Your code here
-
-/* Task 8
-Create a constructor function `Car` that takes `brand`, `model`, and `year`.
-In the constructor, add a method `age()` that calculates the car’s age.
-Instantiate a new `Car` and display its age on the webpage.
-*/
-
-// Your code here
-
-/* Task 9
-Create an array `users` where each user has `name` and `score`.
-Add a button in HTML that sorts the users by score in descending order and updates the displayed list.
-*/
-
-// Your code here
-
-/* Task 10
-Create an object `shoppingList` with an array `items`.
-Add an input field and button to allow users to add new items to `items` and display the updated list.
-*/
-
-// Your code here
-
 /* Task 11
 Create an array of `posts` where each post has `title`, `content`, and `likes`.
 Add a "Like" button next to each post that increases the `likes` count and updates the display.
