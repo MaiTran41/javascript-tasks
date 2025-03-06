@@ -20,4 +20,10 @@
 - **week_05:**
   - [x] Arrays
   - [x] Pancake maker 2
-
+- **week_06:**
+  - [x] Little zoo
+  - [x] Objects
+- **week_07:**
+  - [x] JSON
+  - [x] LocalStorage
+  - [] pancake_maker3
