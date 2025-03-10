@@ -8,6 +8,7 @@ const delivery = document.querySelectorAll(".delivery");
 const seeOrderBtn = document.getElementById("seeOrder");
 const customerName = document.getElementById("customerName");
 const summaryText = document.getElementById("summaryText");
+const confirmOrderBtn = document.getElementById("confirmOrder");
 
 const changeHandler = () => {
   const basePrice = parseFloat(
@@ -63,7 +64,6 @@ const getExtras = () => {
 
 const getDelivery = () => {
   const selectedDeliveryMethod = document.querySelector(".delivery:checked");
-  console.log(selectedDeliveryMethod.parentElement.innerText);
 
   const formattedSelectedDeliveryMethod =
     selectedDeliveryMethod.parentElement.innerText.trim();
@@ -79,6 +79,8 @@ const seeOrderClickHandler = () => {
   // array destructuring
   const [formattedPancakeType] = pancakeType.value.split(" - ");
 
+  console.log(formattedPancakeType);
+
   const [formattedExtras] = extras.split(" -");
 
   // Example: "Order created by Mei: Blueberries pancake  with [nuts, syrup] & cream. Delivery method: "
@@ -90,14 +92,18 @@ seeOrderBtn.addEventListener("click", seeOrderClickHandler);
 // Step 3 :
 const orders = [];
 
-const order = {
-  id: Date.now(),
-  //   customerName: customerName.value,
-  //   selectedPancake: formattedPancakeType,
-  //   toppings: [toppings],
-  //   extras: [formattedExtras],
-  //   deliveryMethod: deliveryMethod,
-  //   totalPrice,
-  //   status: "waiting",
+const confirmOrderHandler = () => {
+  const order = {
+    id: Date.now(),
+    customerName: customerName.value,
+    // selectedPancake: formattedPancakeType,
+    toppings: getToppings(),
+    extras: getExtras(),
+    deliveryMethod: getDelivery(),
+    // totalPrice: basePrice + toppingsTotal + extraTotal + deliveryPrice,
+  };
+
+  console.log(order);
 };
-console.log(order.id);
+
+confirmOrderBtn.addEventListener("click", confirmOrderHandler);
