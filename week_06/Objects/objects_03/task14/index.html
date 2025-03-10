@@ -4,21 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="/week_06/Objects/objects_03/task14/styles.css"
+    />
   </head>
   <body>
-    <h1>Book library</h1>
-    <form action="#">
-      <label for="title">Title</label>
-      <input type="text" />
+    <div id="form-container">
+      <h1>Book library</h1>
+      <form action="#">
+        <label for="title">Title</label>
+        <input type="text" id="title" />
 
-      <label for="author">Author</label>
-      <input type="text" />
+        <label for="author">Author</label>
+        <input type="text" id="author" />
 
-      <label for="pages">Pages</label>
-      <input type="number" />
+        <label for="pages">Pages</label>
+        <input type="number" id="pages" />
 
-      <button id="submitForm">Submit</button>
-    </form>
+        <button id="submitForm">Submit</button>
+      </form>
+
+      <div id="bookDisplay">
+        <h2>Book list</h2>
+        <ul></ul>
+      </div>
+    </div>
 
     <script src="/week_06/Objects/objects_03/task14/main.js"></script>
   </body>

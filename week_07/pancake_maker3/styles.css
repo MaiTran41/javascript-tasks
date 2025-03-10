@@ -90,14 +90,15 @@ label {
 button {
   border-radius: 5px;
   border: none;
-  background-color: #7d4e27;
+  /* background-color: #7d4e27; */
+  background-color: #827973;
   height: 36px;
   color: white;
   padding: 10px;
 }
 
 button:hover {
-  background-color: #6a523f;
+  background-color: #7d4e27;
 }
 
 .btn-container {
