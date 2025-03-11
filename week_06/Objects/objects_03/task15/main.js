@@ -23,7 +23,6 @@ const addFox = () => {
   const li = document.createElement("li");
 
   foxList.appendChild(li);
-
   li.textContent = `${nameInput.value} & ${locationInput.value}`;
 };
 
