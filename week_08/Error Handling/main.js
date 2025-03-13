@@ -1,7 +1,5 @@
 "use strict";
 
-// Check again task 4, 9
-
 /* Task 1: Try-Catch for Debugging
 /*
 Task: Wrap the code inside a `try-catch` block.
@@ -126,7 +124,14 @@ function saveUser(user) {
 
 function getUser() {
   // Your code here
-  const formattedUser = JSON.parse(localStorage.getItem("user"));
+  try {
+    const formattedUserObj = JSON.parse(localStorage.getItem("user"));
+
+    console.log(formattedUserObj);
+  } catch (err) {
+    console.error(err.message);
+    return null;
+  }
 }
 
 /* Task 7: Check if Object Property Exists
@@ -140,6 +145,23 @@ checkProperty({ name: "Bob", age: 30 }, "email"); // Should log "Property not fo
 
 function checkProperty(obj, key) {
   // Your code here
+  if (obj.hasOwnProperty(key)) {
+    console.log(obj[key]);
+  } else {
+    throw new Error("Property not found");
+  }
+}
+
+try {
+  checkProperty({ name: "Bob", age: 30 }, "name");
+} catch (err) {
+  console.error(err.message);
+}
+
+try {
+  checkProperty({ name: "Bob", age: 30 }, "email");
+} catch (err) {
+  console.error(err.message);
 }
 
 /* Task 8: Fetch API Error Handling
@@ -153,6 +175,21 @@ fetchData("invalid-url"); // Should log network error
 
 async function fetchData(url) {
   // Your code here
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    // Parse and return the JSON data
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Fetch error:", error.message);
+    return null;
+  }
 }
 
 /* Task 9: Fix a URI Error
@@ -166,13 +203,13 @@ task9("%"); // Should log URIError
 
 function task9(malformedURI) {
   // Your code here
-
   try {
     console.log(decodeURI(malformedURI));
   } catch (err) {
     console.error(err.message);
   }
 }
+
 task9("https%3A%2F%2Fexample.com");
 task9("%");
 
@@ -186,8 +223,11 @@ clearStorage(); // Should log "LocalStorage cleared."
 
 function clearStorage() {
   // Your code here
-  if (localStorage.length === 0) {
+  try {
+    localStorage.length === 0;
     console.log("LocalStorage cleared.");
+  } catch (err) {
+    console.error(err.message);
   }
 }
 clearStorage();
