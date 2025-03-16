@@ -1,4 +1,3 @@
-//  solution
 const animalSimple = [
   "Fox",
   "Bear",
@@ -41,9 +40,11 @@ const addAnimal = () => {
 const searchAnimal = () => {
   const searchText = searchInput.value.toLowerCase();
 
-  const filteredAnimals = animalSimple.filter((animal) => {
-    animal.toLocaleLowerCase().includes(searchText);
-  });
+  console.log(searchText);
+
+  const filteredAnimals = animalSimple.filter((animal) =>
+    animal.toLowerCase().includes(searchText)
+  );
 
   displayAnimal(filteredAnimals);
 
@@ -52,7 +53,6 @@ const searchAnimal = () => {
 
 const sortAnimal = () => {
   animalSimple.sort();
-  console.log(animalSimple);
 
   displayAnimal(animalSimple);
 };
