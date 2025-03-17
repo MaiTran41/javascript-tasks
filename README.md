@@ -31,3 +31,8 @@
   - [x] Error Handling
   - [x] Fault Finding
   - [x] JS writing practices
+- **week_09:**
+  - [x] Chaining
+  - [x] Desructuring
+  - [x] Spread/ rest operator
+  - [ ] Asynchronous
