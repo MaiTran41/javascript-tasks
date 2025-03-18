@@ -6,7 +6,7 @@
 
 body {
   background-color: #f6e5cc;
-  color: #7d4e27;
+  color: #55351b;
   font-family: "Raleway", sans-serif;
   padding: 50px;
   display: flex;
@@ -27,7 +27,7 @@ body {
 }
 
 .order-card {
-  background-color: #fcf5ea;
+  background-color: #e7c0a1;
   padding: 20px;
   border-radius: 10px;
   width: 50vw;
@@ -52,7 +52,7 @@ body {
   width: 18px;
   aspect-ratio: 1/1;
   border: solid black 1px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .status-display.waiting {
@@ -65,4 +65,10 @@ body {
 
 .status-display.delivered {
   background-color: green;
+}
+
+select {
+  background-color: #fcf7ee;
+  font-family: inherit;
+  border-radius: 5px;
 }

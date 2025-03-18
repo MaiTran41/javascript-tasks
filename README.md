@@ -26,7 +26,7 @@
 - **week_07:**
   - [x] JSON
   - [x] LocalStorage
-  - [] pancake_maker3
+  - [ ] pancake_maker3
 - **week_08:**
   - [x] Error Handling
   - [x] Fault Finding

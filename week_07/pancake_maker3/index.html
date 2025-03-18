@@ -21,7 +21,7 @@
         <form id="pancakeForm">
           <!-- Customer Name -->
           <label for="customerName">Your Name:</label>
-          <input
+          <input 
             type="text"
             id="customerName"
             name="customerName"
@@ -107,12 +107,62 @@
          
 
         <!-- Order Summary Display -->
-        <div id="orderSummary">
+        <!-- <div id="orderSummary">
           <h3>Order Summary</h3>
           <p id="summaryText">Your order details will appear here.</p>
         </div>
       </div>
-    </div>
+    </div> -->
+
+
+    <!-- Order card -->
+     <main id="order-content-container">
+
+     
+    <section class="order-card">
+      <ul>
+        <li>
+          <label for="">Order Number:</label>
+          <span class="value"> 123</span>
+        </li>
+        <li>
+          <label for="">Customer Name:</label>
+          <span class="value">Mei</span>
+        </li>
+        <li>
+          <label for="">Selected Pancake:</label>
+          <span class="value">Pancake</span>
+        </li>
+        <li>
+          <label for="">Toppings:</label>
+          <span class="value">Nuts, Syrup</span>
+        </li>
+        <li>
+          <label for="">Extras:</label>
+          <span class="value">Whipped cream, Ice Cream</span>
+        </li>
+        <li>
+          <label for="">Delivery Method:</label>
+          <span class="value">Eat in</span>
+        </li>
+        <li>
+          <label for="">Total Price:</label>
+          <span class="value">123</span>
+        </li>
+
+        <li class="status-content-container">
+          <label for="">Status:</label>
+          <select name="" id="">
+            <option value="waiting">Waiting</option>
+            <option value="ready">Ready</option>
+            <option value="delivered">Delivered</option>
+          </select>
+          <div class="status-display waiting"></div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
 
     <script src="/week_07/pancake_maker3/main.js"></script>
   </body>

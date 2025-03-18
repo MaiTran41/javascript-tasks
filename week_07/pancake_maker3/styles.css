@@ -1,12 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --background-color: #f6e5cc;
+  --text-color: #55351b;
+  /* --accent-color: #b8875d; */
+  --accent-color: #55351b;
+  --button-color: #908782;
+  --summary-bg-color: #e7c6ab;
+}
+
 body {
-  background-color: #f6e5cc;
-  color: #7d4e27;
+  background-color: var(--background-color);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
   min-height: 100vh;
-  /* overflow: hidden; */
   font-family: "Raleway", sans-serif;
   overflow: scroll;
 }
@@ -25,24 +39,30 @@ body {
 }
 
 .image-container img {
-  object-fit: fit;
-  width: 100%;
+  object-fit: cover;
+  width: 40vw;
   height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .form-container {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* flex: 1; */
   padding: 50px;
   min-height: 100vh;
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .price-banner {
   position: absolute;
   top: 20px;
   right: 30px;
-  background-color: #f6e5cc;
-  color: #7d4e27;
+  background-color: var(--background-color);
+  color: var(--text-color);
   font-weight: bolder;
   border-radius: 50%;
   width: 100px;
@@ -59,26 +79,41 @@ h3 {
 
 #customerName {
   border-radius: 5px;
-  border: none;
+  border: 1px solid #55351b;
   font-family: inherit;
-  height: 30px;
+  height: 2rem;
   margin: 12px 0 0 0;
+  color: white;
+  /* width: 140px; */
+  width: 140px;
+  padding: 0.5rem;
 }
 
 input[type="checkbox"] {
   margin-right: 5px;
-  accent-color: #7d4e27;
+  accent-color: var(--accent-color);
+  border: 1px solid #a67c52;
 }
 
 input[type="radio"] {
   margin-right: 5px;
-  accent-color: #7d4e27;
+  accent-color: var(--accent-color);
 }
 
 select,
 label {
   display: block;
   margin-top: 10px;
+}
+
+select {
+  background-color: white;
+  color: var(--text-color);
+  font-family: inherit;
+  border-radius: 4px;
+  padding: 0.25rem;
+  height: 2rem;
+  width: 140px;
 }
 
 #confirmOrder a {
@@ -90,29 +125,92 @@ label {
 button {
   border-radius: 5px;
   border: none;
-  /* background-color: #7d4e27; */
-  background-color: #827973;
+  background-color: var(--button-color);
   height: 36px;
   color: white;
   padding: 10px;
 }
 
 button:hover {
-  background-color: #7d4e27;
+  background-color: var(--accent-color);
 }
 
 .btn-container {
   display: flex;
-  gap: 20px;
+  gap: 1.5rem;
+  padding: 20px 0;
 }
 
 #orderSummary {
-  background-color: #e7c0a1;
+  background-color: var(--summary-bg-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin: 20px 0;
-  padding: 1rem;
+  margin: 10px 0;
+  padding: 1rem 1.25rem;
   line-height: 1.5;
+  border-radius: 5px;
+}
+
+#orderSummary h3 {
+  margin: 0;
+}
+
+/* Display order card */
+
+#order-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.order-card {
+  background-color: #e7c0a1;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.order-card ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.order-card ul li .value {
+  font-weight: 600;
+  font-style: italic;
+}
+
+.order-card ul li.status-content-container {
+  display: flex;
+  gap: 0.5rem;
+}
+.status-display {
+  width: 18px;
+  aspect-ratio: 1/1;
+  border: solid black 1px;
+  border-radius: 5px;
+}
+
+.status-display.waiting {
+  background-color: yellow;
+}
+
+.status-display.ready {
+  background-color: blue;
+}
+
+.status-display.delivered {
+  background-color: green;
+}
+
+select {
+  background-color: #fcf7ee;
+  font-family: inherit;
+  border-radius: 5px;
 }
