@@ -8,13 +8,12 @@ const delivery = document.querySelectorAll(".delivery");
 const seeOrderBtn = document.getElementById("seeOrder");
 const customerName = document.getElementById("customerName");
 const summaryText = document.getElementById("summaryText");
-const confirmOrderBtn = document.getElementById("confirmOrder");
+const confirmOrderBtn = document.getElementById("confirm-order-btn");
 
 const changeHandler = () => {
-  const { basePrice, toppingsTotal, extraTotal, deliveryPrice } =
-    calculateTotalPrice();
+  const totalPrice = calculateTotalPrice();
 
-  displayPriceText({ basePrice, toppingsTotal, extraTotal, deliveryPrice });
+  displayPriceText(totalPrice);
 };
 
 const calculateTotalPrice = () => {
@@ -35,18 +34,11 @@ const calculateTotalPrice = () => {
     ...document.querySelectorAll(".delivery:checked"),
   ].reduce((sum, delivery) => sum + parseFloat(delivery.dataset.price), 0);
 
-  return { basePrice, toppingsTotal, extraTotal, deliveryPrice };
+  return basePrice + toppingsTotal + extraTotal + deliveryPrice;
 };
 
-const displayPriceText = ({
-  basePrice,
-  toppingsTotal,
-  extraTotal,
-  deliveryPrice,
-}) => {
-  const priceText = `${
-    basePrice + toppingsTotal + extraTotal + deliveryPrice
-  }€`;
+const displayPriceText = (totalPrice) => {
+  const priceText = `${totalPrice}€`;
 
   totalPriceDisplay.textContent = priceText;
   totalPriceBanner.textContent = priceText;
@@ -67,9 +59,7 @@ const getToppings = () => {
   return toppingNameList;
 };
 
-const getFormattedToppingsText = () => {
-  const toppingNameList = getToppings();
-
+const getFormattedToppingsText = (toppingNameList) => {
   return toppingNameList.join(", ");
 };
 
@@ -89,9 +79,7 @@ const getExtras = () => {
   return extraNameList;
 };
 
-const getFormattedExtrasText = () => {
-  const extraList = getExtras();
-
+const getFormattedExtrasText = (extraList) => {
   return extraList.join(", ");
 };
 
@@ -108,17 +96,21 @@ const getDelivery = () => {
 
 const getPancakeType = () => {
   const [formattedPancakeType] = pancakeType.value.split(" - ");
-  return formattedPancakeType;
+  return formattedPancakeType.toLowerCase();
 };
 
 const seeOrderClickHandler = () => {
-  const toppings = getFormattedToppingsText();
-  const extras = getFormattedExtrasText();
+  const toppingsList = getToppings();
+  const toppingsText = getFormattedToppingsText(toppingsList);
+
+  const extrasList = getExtras();
+  const extras = getFormattedExtrasText(extrasList);
+
   const deliveryMethod = getDelivery();
 
   const pancakeType = getPancakeType();
 
-  summaryText.textContent = `Order created by ${customerName.value}: ${pancakeType} pancake with ${toppings} & ${extras}. Delivery method: ${deliveryMethod} `;
+  summaryText.textContent = `Order created by ${customerName.value}: ${pancakeType} pancake with ${toppingsText} & ${extras}. Delivery method: ${deliveryMethod} `;
 };
 
 seeOrderBtn.addEventListener("click", seeOrderClickHandler);
@@ -131,10 +123,38 @@ const confirmOrderHandler = () => {
     toppings: getToppings(),
     extras: getExtras(),
     deliveryMethod: getDelivery(),
-    // totalPrice: basePrice + toppingsTotal + extraTotal + deliveryPrice,
+    totalPrice: calculateTotalPrice(),
+    status: "waiting",
   };
 
-  console.log(order);
+  const existingOrdersList = getExistingOrders();
+
+  existingOrdersList.push(order);
+
+  saveOrders(existingOrdersList);
+
+  window.location.href = "/week_07/pancake_maker3/allOrders.html";
+};
+
+const getExistingOrders = () => {
+  const stringifiedExistingOrders = localStorage.getItem("orders");
+
+  if (stringifiedExistingOrders === null) {
+    return [];
+  }
+  try {
+    const parsedExistingOrders = JSON.parse(stringifiedExistingOrders);
+    if (Array.isArray(parsedExistingOrders)) {
+      return parsedExistingOrders;
+    }
+    return [];
+  } catch (err) {
+    return [];
+  }
+};
+
+const saveOrders = (orders) => {
+  localStorage.setItem("orders", JSON.stringify(orders));
 };
 
 confirmOrderBtn.addEventListener("click", confirmOrderHandler);
