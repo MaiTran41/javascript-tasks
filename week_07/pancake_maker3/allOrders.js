@@ -31,7 +31,7 @@ const generateOrderCardHtmlString = (order) => `
      <section class="order-card">
         <ul>
           <li>
-            <label for="">Order Number:</label>
+            <label for="">Order ID:</label>
             <span class="value">${order.id}</span>
           </li>
           <li>
@@ -63,7 +63,9 @@ const generateOrderCardHtmlString = (order) => `
 
           <li class="status-content-container">
             <label for="">Status:</label>
-            <select onchange="handleStatusSelectChange(this)">
+            <select data-order-id=${
+              order.id
+            } onchange="handleStatusSelectChange(this)">
               <option value="waiting" ${
                 order.status === "waiting" ? "selected" : ""
               }>Waiting</option>
@@ -80,7 +82,38 @@ const generateOrderCardHtmlString = (order) => `
       </section>`;
 
 const handleStatusSelectChange = (selectElement) => {
-  console.log(selectElement.value);
+  const existingOrders = getExistingOrders();
+
+  const orderToUpdate = existingOrders.find(
+    (order) => order.id === Number(selectElement.dataset.orderId)
+  );
+
+  const prevStatus = orderToUpdate.status;
+  orderToUpdate.status = selectElement.value;
+
+  saveOrders(existingOrders);
+
+  updateStatusDisplayColor({
+    selectElement,
+    prevStatus,
+    currStatus: orderToUpdate.status,
+  });
+};
+
+const saveOrders = (orders) => {
+  localStorage.setItem("orders", JSON.stringify(orders));
+};
+
+const updateStatusDisplayColor = ({
+  selectElement,
+  prevStatus,
+  currStatus,
+}) => {
+  const statusDisplay =
+    selectElement.parentNode.querySelector(".status-display");
+
+  statusDisplay.classList.remove(prevStatus);
+  statusDisplay.classList.add(currStatus);
 };
 
 const getOrderCards = (orders) => {
@@ -94,7 +127,6 @@ const getOrderCards = (orders) => {
 
 window.addEventListener("DOMContentLoaded", () => {
   const existingOrders = getExistingOrders();
-  console.log(existingOrders);
 
   const orderCardsHtmlString = getOrderCards(existingOrders);
 

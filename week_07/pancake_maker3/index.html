@@ -20,7 +20,6 @@
           <h2>Customize Your Pancake</h2>
 
           <form id="pancakeForm">
-            <!-- Customer Name -->
             <label for="customerName">Your Name:</label>
             <input
               type="text"
@@ -29,7 +28,6 @@
               placeholder="Enter your name"
             />
 
-            <!-- Pancake Type -->
             <label for="type">Choose your pancake type:</label>
             <select id="type" name="pancakeType">
               <option data-price="5">Classic - 5€</option>
@@ -37,7 +35,6 @@
               <option data-price="7">Blueberry - 7€</option>
             </select>
 
-            <!-- Toppings -->
             <h3>Select your toppings (1€ each):</h3>
             <label
               ><input type="checkbox" class="topping" data-price="1" /> Nuts
@@ -49,7 +46,6 @@
               ><input type="checkbox" class="topping" data-price="1" /> Syrup
             </label>
 
-            <!-- Extras -->
             <h3>Add extras:</h3>
             <label
               ><input type="checkbox" class="extra" data-price="2" /> Whipped
@@ -60,7 +56,6 @@
               - 3€</label
             >
 
-            <!-- Delivery Method -->
             <h3>Choose delivery method:</h3>
             <label
               ><input
@@ -91,22 +86,17 @@
               Delivery (+5€)</label
             >
 
-            <!-- Total Price Display -->
             <h3>Total Price: <span id="totalPriceDisplay">5€</span></h3>
 
             <div class="btn-container">
-              <!-- See Order Button -->
               <button type="button" id="seeOrder">See Order</button>
 
-              <!-- Confirm Order Button -->
               <button type="button" id="confirm-order-btn">
                 Confirm Order
-                <!-- <a href="/week_07/pancake_maker3/allOrders.html"></a> -->
               </button>
             </div>
           </form>
 
-          <!-- Order Summary Display -->
           <div id="orderSummary">
             <h3>Order Summary</h3>
             <p id="summaryText">Your order details will appear here.</p>
