@@ -7,7 +7,6 @@ teamMembers.forEach((member) => console.log(member));
 // 2. Remove the first member of the array.
 
 teamMembers.shift();
-
 console.log(teamMembers);
 
 // 3. Remove the last member of the array.
@@ -54,6 +53,21 @@ console.log(mergeArr);
 console.log(teamMembers, newMembers);
 
 // 13. Find all occurrences of "John" in the array and store their positions in a new array.
+
+function findIndices(array, searchName) {
+  const positions = [];
+
+  array.forEach((name, index) => {
+    if (name === searchName) {
+      positions.push(index);
+    }
+  });
+
+  return positions;
+}
+
+const johnPositions = findIndices(teamMembers, "John");
+console.log(johnPositions);
 
 // 14. Transform all names in the array to be uppercase while keeping the original array unchanged.
 

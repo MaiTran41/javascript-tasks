@@ -1,56 +1,75 @@
-const typeSelect = document.getElementById("type");
-const totalPriceDisplay = document.getElementById("totalPriceDisplay");
-const totalPriceBanner = document.getElementById("totalPrice");
-const toppingOptions = document.querySelectorAll(".topping");
-const extraOptions = document.querySelectorAll(".extra");
+const pancakeType = document.querySelector("#type");
+const toppings = document.querySelectorAll(".topping");
+const extras = document.querySelectorAll(".extra");
+const totalPriceDisplay = document.querySelector("#totalPriceDisplay");
+const totalPriceBanner = document.querySelector("#totalPrice");
+const pancakeForm = document.getElementById("pancakeForm");
+const delivery = document.querySelectorAll(".delivery");
+const seeOrderBtn = document.getElementById("seeOrder");
+const customerName = document.getElementById("customerName");
+const summaryText = document.getElementById("summaryText");
 
-// default value for typePrice
-let typePrice = Number(typeSelect.value);
-let toppingPrice = 0;
-let extraPrice = 0;
+const changeHandler = () => {
+  const basePrice = parseFloat(
+    document.getElementById("type").selectedOptions[0].dataset.price
+  );
 
-const updateTotalPriceDisplay = () => {
-  const totalPrice = typePrice + toppingPrice + extraPrice;
-  totalPriceDisplay.textContent = totalPrice;
-  totalPriceBanner.textContent = totalPrice;
+  const toppingsTotal = [
+    ...document.querySelectorAll(".topping:checked"),
+  ].reduce((sum, topping) => sum + parseFloat(topping.dataset.price), 0);
+
+  const extraTotal = [...document.querySelectorAll(".extra:checked")].reduce(
+    (sum, extra) => sum + parseFloat(extra.dataset.price),
+    0
+  );
+
+  const deliveryPrice = [
+    ...document.querySelectorAll(".delivery:checked"),
+  ].reduce((sum, delivery) => sum + parseFloat(delivery.dataset.price), 0);
+
+  totalPriceDisplay.textContent = `${
+    basePrice + toppingsTotal + extraTotal + deliveryPrice
+  }€`;
+  totalPriceBanner.textContent = `${
+    basePrice + toppingsTotal + extraTotal + deliveryPrice
+  }€`;
+};
+pancakeForm.addEventListener("change", changeHandler);
+
+const getToppings = () => {
+  const selectedToppings = document.querySelectorAll(".topping:checked");
+
+  const toppingList = [];
+
+  selectedToppings.forEach((element) => {
+    toppingList.push(
+      element.parentElement.innerText.trim().toLocaleLowerCase()
+    );
+  });
+  return toppingList.join(", ");
+};
+const getExtras = () => {
+  const selectedExtras = document.querySelectorAll(".extra:checked");
+
+  const extraList = [];
+
+  selectedExtras.forEach((element) => {
+    extraList.push(element.parentElement.innerText.trim().toLocaleLowerCase());
+  });
+
+  return extraList.join(", ");
 };
 
-const typeSelectChangeHandler = (e) => {
-  typePrice = Number(e.target.value);
+// Check this
+const seeOrderClickHandler = () => {
+  const toppings = getToppings();
+  const extras = getExtras();
 
-  updateTotalPriceDisplay();
+  // array destructuring
+  const [formattedPancakeType] = pancakeType.value.split(" - ");
+
+  // Example: "Order created by Mei: Blueberries pancake  with [nuts, syrup] & cream. Delivery fee is 5e"
+  summaryText.textContent = `Order created by ${customerName.value}: ${formattedPancakeType} pancake with ${toppings} & ${extras}. Delivery method is  `;
 };
 
-typeSelect.addEventListener("change", typeSelectChangeHandler);
-
-// set up event listener for 'topping' checkboxes
-const toppingChangeHandler = (e) => {
-  const formattedVal = Number(e.target.value);
-
-  if (e.target.checked) {
-    toppingPrice += formattedVal;
-  } else {
-    toppingPrice -= formattedVal;
-  }
-  updateTotalPriceDisplay();
-};
-
-for (let i = 0; i < toppingOptions.length; i++) {
-  toppingOptions[i].addEventListener("change", toppingChangeHandler);
-}
-
-// set up event listener for 'extras' checkboxes
-const extraChangeHandler = (e) => {
-  const formattedVal = Number(e.target.value);
-
-  if (e.target.checked) {
-    extraPrice += formattedVal;
-  } else {
-    extraPrice -= formattedVal;
-  }
-  updateTotalPriceDisplay();
-};
-
-for (let i = 0; i < extraOptions.length; i++) {
-  extraOptions[i].addEventListener("change", extraChangeHandler);
-}
+seeOrderBtn.addEventListener("click", seeOrderClickHandler);

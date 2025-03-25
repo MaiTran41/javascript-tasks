@@ -8,7 +8,6 @@ const btn = document.querySelector("btn");
 const toggleBtn = () => {
   const para = document.querySelector("p");
   if (para.style.display === "none") {
-    // default style display of <p> is 'block'
     para.style.display = "block";
   } else {
     para.style.display = "none";

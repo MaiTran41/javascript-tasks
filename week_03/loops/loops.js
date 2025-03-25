@@ -5,15 +5,15 @@ Write a function named logOddNumbers:
 Example output in the console: 1, 3, 5, 7, ..., 99. 
 */
 
-// const logOddNumbers = () => {
-//   for (i = 1; i < 100; i++) {
-//     if (i % 2 !== 0) {
-//       console.log(i);
-//     }
-//   }
-// };
+const logOddNumbers = () => {
+  for (i = 1; i < 100; i++) {
+    if (i % 2 !== 0) {
+      console.log(i);
+    }
+  }
+};
 
-// logOddNumbers();
+logOddNumbers();
 
 // write for loop and log the number from 1 to 5
 const logNumber = () => {
@@ -103,8 +103,6 @@ const countEvenNumbers = () => {
 };
 countEvenNumbers();
 
-// Another way: use for loop
-
 // loop_05
 /* 
 Write a function named calculateAverageUntilZero:
@@ -117,26 +115,6 @@ const calculateAverageUntilZero = () => {
   let sum = 0;
   let count = 0;
   let currentInputNumber;
-
-  // use do...while loop
-  //  do
-  //   statement
-  //   while (condition);
-
-  // while (inputNumber !== 0) {
-  //   inputNumber = Number(prompt("Please put a number"));
-  //   sum += inputNumber;
-  //   numArr.push(inputNumber);
-  //   count++;
-  //   console.log(numArr);
-
-  //   if (inputNumber === 0) {
-  //     averageNum = sum / (numArr.length - 1);
-  //     console.log(averageNum);
-
-  //     break;
-  //   }
-  // }
 
   do {
     currentInputNumber = Number(prompt("Please put a number"));
@@ -357,17 +335,6 @@ Log the complete grocery list in the console.
 const buildGroceryList = () => {
   let groceryList = "";
 
-  // do {
-  //   itemInput = prompt("Input grocery items here");
-  //   if (itemInput === "done") {
-  //     groceryList = groceryList.trim();
-  //     break;
-  //   }
-  //   groceryList += itemInput;
-  //   groceryList += " ";
-  //   console.log(itemInput);
-  //   } while (itemInput !== "done");
-
   do {
     const itemInput = prompt("Input grocery items here");
     if (itemInput === "done") {
@@ -421,7 +388,6 @@ const createWordPyramid = (input) => {
 
   for (let count = 0; count < input.length; count++) {
     row += input[count];
-    console.log(row);
   }
 };
 

@@ -3,7 +3,6 @@ const magic8Ball = () => {
   console.log(question);
 
   let randomNumber = Math.floor(Math.random() * 8) + 1;
-  console.log(randomNumber);
 
   let answer = "";
 
@@ -35,9 +34,3 @@ const magic8Ball = () => {
   }
   alert(answer);
 };
-
-// function getRndInteger(min, max) {
-//   return Math.floor(Math.random() * (max - min + 1) ) + min;
-// }
-
-console.log(magic8Ball());

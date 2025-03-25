@@ -59,10 +59,7 @@ Expected outcome: 1, "Dog", 3.14, false
 */
 // Write your code here
 
-console.log(myArr[0]);
-console.log(myArr[1]);
-console.log(myArr[2]);
-console.log(myArr[3]);
+myArr.forEach((element) => console.log(element));
 
 // Exercise 5: Find common animal species between reserve1Animals and reserve2Animals
 let reserve1Animals = ["Fox", "Deer", "Owl", "Bear"];
@@ -76,7 +73,13 @@ Expected outcome:
 */
 // Write your code here
 
-const findCommonAnimal = (animalArr1, animalArr2) => {};
+// Find common elements between two arrays
+function findCommonSpecies(array1, array2) {
+  return array1.filter((animal) => array2.includes(animal));
+}
+
+const commonSpecies = findCommonSpecies(reserve1Animals, reserve2Animals);
+console.log(`Common species are ${commonSpecies}`);
 
 // Exercise 6: Log each letter of name
 // s from the animalNames array

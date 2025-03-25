@@ -1,4 +1,4 @@
-const animals = [
+const animalSimple = [
   "Fox",
   "Bear",
   "Cat",
@@ -12,22 +12,49 @@ const animals = [
   "Otter",
 ];
 
-const animalsListDisplay = document.getElementById("animalList");
+const animalList = document.getElementById("animalList");
 const addAnimalBtn = document.getElementById("addAnimal");
-const animalsInput = document.getElementById("newAnimalName");
 
-animals.forEach((animalName) => {
-  const element = document.createElement("li");
-  element.textContent = animalName;
-  animalsListDisplay.appendChild(element);
-});
+const searchInput = document.getElementById("searchAnimal");
+const sortAnimalsBtn = document.getElementById("sortAnimals");
 
-// animalsListDisplay.innerHTML = "";
+const displayAnimal = (animalArray) => {
+  animalList.innerHTML = "";
 
-const addAnimalHandler = () => {
-  const element = document.createElement("li");
-  element.textContent = animalsInput.value;
-  animalsListDisplay.appendChild(element);
+  for (const animal of animalArray) {
+    const li = document.createElement("li");
+    li.textContent = `${animal}`;
+    animalList.appendChild(li);
+  }
 };
 
-addAnimalBtn.addEventListener("click", addAnimalHandler);
+const addAnimal = () => {
+  const nameInput = document.getElementById("newAnimalName").value.trim();
+
+  animalSimple.push(nameInput);
+  displayAnimal(animalSimple);
+
+  document.getElementById("newAnimalName").value = "";
+};
+
+const searchAnimal = () => {
+  const searchText = searchInput.value.toLowerCase();
+
+  const filteredAnimals = animalSimple.filter((animal) =>
+    animal.toLowerCase().includes(searchText)
+  );
+
+  displayAnimal(filteredAnimals);
+};
+
+const sortAnimal = () => {
+  animalSimple.sort();
+
+  displayAnimal(animalSimple);
+};
+
+addAnimalBtn.addEventListener("click", addAnimal);
+searchInput.addEventListener("input", searchAnimal);
+sortAnimalsBtn.addEventListener("click", sortAnimal);
+
+displayAnimal(animalSimple);

@@ -25,6 +25,4 @@ const formValidate = (event) => {
   return;
 };
 
-formValidate();
-
-// submitBtn.addEventListener("click", formValidate);
+submitBtn.addEventListener("click", formValidate);
