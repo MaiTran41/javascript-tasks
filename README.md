@@ -26,7 +26,7 @@
 - **week_07:**
   - [x] JSON
   - [x] LocalStorage
-  - [ ] pancake_maker3
+  - [x] pancake_maker3
 - **week_08:**
   - [x] Error Handling
   - [x] Fault Finding
@@ -35,4 +35,4 @@
   - [x] Chaining
   - [x] Desructuring
   - [x] Spread/ rest operator
-  - [ ] Asynchronous
+  - [x] Asynchronous
