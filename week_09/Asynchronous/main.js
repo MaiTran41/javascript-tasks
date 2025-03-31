@@ -27,7 +27,7 @@ It should **wait 3 seconds** before calling the callback with:
 
 function processOrder(orderNumber, callback) {
   setTimeout(() => {
-    callback(`Order ${orderNumber} is ready for pickup.`);
+    callback(`Order ${orderNumber} is ready for pick up!`);
   }, 3000);
 }
 
@@ -44,13 +44,12 @@ If `validUser === false`, call the callback immediately with `"Invalid login"`
 */
 
 function loginUser(username, validUser, callback) {
-  if (validUser) {
-    setTimeout(() => {
-      callback(`Welcome, ${username}!`);
-    }, 1000);
-  } else {
-    callback("Invalid login");
-  }
+  setTimeout(() => {
+    if (validUser === false) {
+      callback("Invalid login");
+    }
+    callback(`Welcome, ${username}!`);
+  }, 1000);
 }
 
 // Test Cases
@@ -69,11 +68,9 @@ If `shouldFail === true`, **reject after 2 seconds** with `"Error fetching user 
 
 function fetchUserData(shouldFail) {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      shouldFail
-        ? reject("Error fetching user data")
-        : resolve("User data retrieved");
-    }, 2000);
+    shouldFail === false
+      ? setTimeout(() => resolve(`User data retrieved`), 2000)
+      : setTimeout(() => reject(`Error fetching user data`), 2000);
   });
 }
 
