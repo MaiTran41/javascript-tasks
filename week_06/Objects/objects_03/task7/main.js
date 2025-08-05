@@ -7,7 +7,7 @@ Use `fetch` to get weather data from an API and display it in an HTML element.
 // Your code here
 
 const weatherApp = {
-  apiKey: "b20b760d9d5e2f29a75a8fe6b8ad54c9",
+  apiKey: "",
   /**
   
    * @param {string} city - The name of the city to get weather for
